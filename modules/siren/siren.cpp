@@ -25,15 +25,10 @@ void sirenInit()
 
 void oPiezoState()
 {
-    if ( isrRFID )
-    {
-        oPiezo.output();
-        oPiezo = LOW;
-        delay(100);
-        oPiezo.input();
-    } else {
-        oPiezo.input();
-    }
+    oPiezo.output();
+    oPiezo = LOW;
+    delay(100);
+    oPiezo.input();
 }
 
 
@@ -44,7 +39,7 @@ void iPiezoState()
         iPiezo.output();
         iPiezo = LOW;
         delay(100);
-        iPiezo.imput();
+        iPiezo.input();
     } else {
         iPiezo.input();
     }
