@@ -1,4 +1,5 @@
 #include "arm_book_lib.h"
+#include "servo_door.h"
 
 DigitalOut r(PA_0);
 DigitalOut g(PD_12);
