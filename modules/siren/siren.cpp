@@ -1,61 +1,51 @@
-//=====[Libraries]=============================================================
-
 #include "mbed.h"
 #include "arm_book_lib.h"
-
+#include "ldr_sensor.h"
 #include "siren.h"
-
 #include "smart_home_system.h"
 
-//=====[Declaration of private defines]========================================
 
-//=====[Declaration of private data types]=====================================
+DigitalInOut oPiezo(PC_8);
+DigitalInOut iPiezo(PC_9);
 
-//=====[Declaration and initialization of public global objects]===============
 
-PwmOut sirenPin(PC_9_ALT0);
+static int currentoPiezoTime = 0;
+static int currentiPiezoTime = 0;
 
-//=====[Declaration of external public global variables]=======================
 
-//=====[Declaration and initialization of public global variables]=============
-
-//=====[Declaration and initialization of private global variables]============
-
-static bool sirenState = OFF;
-static int currentStrobeTime = 0;
-
-//=====[Declarations (prototypes) of private functions]========================
-
-//=====[Implementations of public functions]===================================
 
 void sirenInit()
 {
-    sirenPin.period(1.0f);
-    sirenPin.write(1.0f);
+    oPiezo.mode(OpenDrain);
+    oPiezo.input();
+    iPiezo.mode(OpenDrain);
+    iPiezo.input();
 }
 
-bool sirenStateRead()
-{
-    return sirenState;
-}
 
-void sirenStateWrite( bool state )
+void oPiezoState()
 {
-    sirenState = state;
-}
-
-void sirenUpdate( int strobeTime )
-{
-    if( sirenState ) {
-        if (currentStrobeTime != strobeTime) {
-            sirenPin.period( (float) strobeTime * 2 / 1000 );
-            sirenPin.write(0.5f);
-            currentStrobeTime = strobeTime;
-        }
+    if ( isrRFID )
+    {
+        oPiezo.output();
+        oPiezo = LOW;
+        delay(100);
+        oPiezo.imput();
     } else {
-        sirenPin.write(1.0f);
-        currentStrobeTime = 0;
+        oPiezo.input();
     }
 }
 
-//=====[Implementations of private functions]==================================
+
+void iPiezoState()
+{
+    if( iAlarm )
+    {
+        iPiezo.output();
+        iPiezo = LOW;
+        delay(100);
+        iPiezo.imput();
+    } else {
+        iPiezo.input();
+    }
+}
