@@ -4,18 +4,23 @@
 #include "ldr_sensor.h"
 #include "smart_home_system.h"
 
+
 DigitalOut eLED(PE_10);
+
 
 void entrywayLEDon();
 {
-  if () {
+  while (true)
+  {
     eLED = ON;
   }
 }
 
+
 void entrywayLEDoff();
 {
-  if () {
+  while (true)
+  {
     eLED = OFF;
   }
 }
