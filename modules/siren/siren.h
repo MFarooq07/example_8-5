@@ -10,9 +10,8 @@
 //=====[Declarations (prototypes) of public functions]=========================
 
 void sirenInit();
-bool sirenStateRead();
-void sirenStateWrite( bool state );
-void sirenUpdate( int strobeTime );
+void oPiezoState();
+void iPiezoState();
 
 //=====[#include guards - end]=================================================
 
