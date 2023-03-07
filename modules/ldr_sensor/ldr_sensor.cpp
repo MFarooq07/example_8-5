@@ -16,8 +16,7 @@ static float rLDRvalue = rLDR.read();
 static float gLDRvalue = gLDR.read();
 
 
-void ldrSensorInit() { 
-testLed = OFF}
+void ldrSensorInit() { }
 void ldrSensorUpdate() { }
 
 
@@ -26,7 +25,6 @@ void isDarkness()
     if ( eLDRvalue < threshold )
     {
         oPiezoState();
-        testLed = ON;
     }
 }
 
