@@ -1,1 +1,2 @@
-words
+void entrywayLEDon();
+void entrywayLEDoff();
