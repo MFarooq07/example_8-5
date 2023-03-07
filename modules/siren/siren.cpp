@@ -30,7 +30,7 @@ void oPiezoState()
         oPiezo.output();
         oPiezo = LOW;
         delay(100);
-        oPiezo.imput();
+        oPiezo.input();
     } else {
         oPiezo.input();
     }
