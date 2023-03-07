@@ -14,10 +14,20 @@ static float eLDRvalue = eLDR.read();
 static float rLDRvalue = rLDR.read();
 static float gLDRvalue = gLDR.read();
 
+static bool rLdrState = OFF;  // Delvin
+static bool gLdrState = OFF;  // Delvin
+
 
 void ldrSensorInit() { }
 void ldrSensorUpdate() { }
 
+void rLdrStateRead(){         //Delvin
+    return rLdrState;         //Delvin 
+}
+
+void gLdrStateRead(){
+    return gLdrState;
+}
 
 void isDarkness()
 {
