@@ -20,13 +20,11 @@ void ldrSensorInit() { }
 void ldrSensorUpdate() { }
 
 
-bool isDarkness()
+void isDarkness()
 {
     if ( eLDRvalue < threshold )
     {
-        return true;
-    } else {
-        return false;
+        oPiezoState();
     }
 }
 
