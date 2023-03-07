@@ -25,7 +25,7 @@ void rLdrStateRead(){         //Delvin
     return rLdrState;         //Delvin 
 }
 
-void gLdrStateRead(){
+void gLdrStateRead(){     //Delvin
     return gLdrState;
 }
 
@@ -46,6 +46,7 @@ bool isrRFID()
     if ( rLDRvalue > threshold )
     {
         oPiezoState();
+        rLdrState = ON;  //Delvin
     }
 }
 
@@ -55,5 +56,6 @@ bool isgRFID()
     {
         openDoor(); //this will be in servo module
         toGreenRGBLED(); //turn rgb tto green for 10s (10,000)
+        gLdrState = ON;   //Delvin
     }
 }
