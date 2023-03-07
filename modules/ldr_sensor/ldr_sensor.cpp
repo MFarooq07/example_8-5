@@ -7,7 +7,6 @@
 AnalogIn eLDR(A2);
 AnalogIn rLDR(A3);
 AnalogIn gLDR(A4);
-AnalogOut testLed(LED2);
 
 static float threshold = 0.5;
 
