@@ -9,6 +9,7 @@
 #include "date_and_time.h"
 #include "pc_serial_com.h"
 #include "motion_sensor.h"
+#include "ldr_sensor.h"
 
 //=====[Declaration of private defines]========================================
 
