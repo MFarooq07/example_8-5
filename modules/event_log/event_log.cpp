@@ -1,5 +1,3 @@
-//=====[Libraries]=============================================================
-
 #include "mbed.h"
 #include "arm_book_lib.h"
 
@@ -29,6 +27,8 @@ typedef struct systemEvent {
 
 //=====[Declaration and initialization of private global variables]============
 
+static bool rLdrLastState = OFF;  ///// new
+static bool gLdrLastState = OFF;   //// new
 static bool sirenLastState = OFF;
 static bool gasLastState   = OFF;
 static bool tempLastState  = OFF;
@@ -37,6 +37,7 @@ static bool SBLastState    = OFF;
 static bool motionLastState         = OFF;
 static int eventsIndex     = 0;
 static systemEvent_t arrayOfStoredEvents[EVENT_LOG_MAX_STORAGE];
+
 
 //=====[Declarations (prototypes) of private functions]========================
 
@@ -71,6 +72,14 @@ void eventLogUpdate()
     currentState = motionSensorRead();
     eventLogElementStateUpdate( motionLastState ,currentState, "MOTION" );
     motionLastState = currentState;
+
+    currentState = rLdrRead();
+    eventLogElementStateUpdate( rLdrLastState, currentState, "rLDr state" );   //// new
+    rLdrLastState = currentState;
+
+    currentState = gLdrRead();
+    eventLogElementStateUpdate( gLdrLastState, currentState, "gLDr state" ); ///// new
+    rLdrLastState = currentState;
 }
 
 int eventLogNumberOfStoredEvents()
