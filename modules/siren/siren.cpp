@@ -34,7 +34,7 @@ void oPiezoState()
 
 void iPiezoState()
 {
-    if( iAlarm )
+    if( alarmState )
     {
         iPiezo.output();
         iPiezo = LOW;
