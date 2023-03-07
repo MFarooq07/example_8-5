@@ -12,7 +12,8 @@
 void ldrSensorInit();
 void ldrSensorUpdate();
 
-bool isDarkness();
+void isDarkness();
+
 bool isrRFID();
 bool isgRFID();
 
