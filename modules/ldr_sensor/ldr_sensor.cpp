@@ -7,6 +7,7 @@
 AnalogIn eLDR(A2);
 AnalogIn rLDR(A3);
 AnalogIn gLDR(A4);
+AnalogOut testLed(LED2);
 
 
 static float threshold = 0.5;
@@ -16,15 +17,18 @@ static float rLDRvalue = rLDR.read();
 static float gLDRvalue = gLDR.read();
 
 
-void ldrSensorInit() { }
+void ldrSensorInit() {
+testLed = OFF;
+}
 void ldrSensorUpdate() { }
 
 
 void isDarkness()
 {
-    if ( eLDRvalue < threshold )
+    if ( eLDRvalue > threshold )
     {
         oPiezoState();
+        testLed = ON;
     }
 }
 
