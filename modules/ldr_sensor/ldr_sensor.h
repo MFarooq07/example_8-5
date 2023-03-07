@@ -11,7 +11,10 @@
 
 void ldrSensorInit();
 void ldrSensorUpdate();
-float ldrSensorRead();
+
+bool isDarkness();
+bool isrRFID();
+bool isgRFID();
 
 //=====[#include guards - end]=================================================
 
