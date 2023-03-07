@@ -23,7 +23,7 @@ void isDarkness()
 {
     if ( eLDRvalue < threshold )
     {
-        /* turn on eLED*/
+        entrywayLED();
     }
 }
 
