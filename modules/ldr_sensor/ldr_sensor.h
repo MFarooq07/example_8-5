@@ -11,6 +11,8 @@
 
 void ldrSensorInit();
 void ldrSensorUpdate();
+void rLdrStateRead();  //Delvin
+void gLdrStateRead();  //Delvin
 
 void isDarkness();
 
