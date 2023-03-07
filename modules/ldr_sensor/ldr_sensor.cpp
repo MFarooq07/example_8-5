@@ -23,7 +23,7 @@ void isDarkness()
 {
     if ( eLDRvalue < threshold )
     {
-        oPiezoState();
+        /* turn on eLED*/
     }
 }
 
@@ -31,9 +31,7 @@ bool isrRFID()
 {
     if ( rLDRvalue > threshold )
     {
-        return true;
-    } else {
-        return false;
+        oPiezoState();
     }
 }
 
@@ -41,8 +39,6 @@ bool isgRFID()
 {
     if ( gLDRvalue > threshold )
     {
-        return true;
-    } else {
-        return false;
+        openDoor();
     }
 }
