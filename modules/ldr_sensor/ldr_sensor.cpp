@@ -1,35 +1,51 @@
-//=====[Libraries]=============================================================
-
+#include "mbed.h"
 #include "arm_book_lib.h"
-
-#include "smart_home_system.h"
 #include "ldr_sensor.h"
+#include "siren.h"
+#include "smart_home_system.h"
 
-//=====[Declaration of private defines]========================================
+AnalogIn eLDR(A2);
+AnalogIn rLDR(A3);
+AnalogIn gLDR(A4);
 
-//=====[Declaration of private data types]=====================================
 
-//=====[Declaration and initialization of public global objects]===============
+static float threshold = 0.5;
 
-AnalogIn ldr(A2);
+static float eLDRvalue = eLDR.read();
+static float rLDRvalue = rLDR.read();
+static float gLDRvalue = gLDR.read();
 
-//=====[Declaration of external public global variables]=======================
-
-//=====[Declaration and initialization of public global variables]=============
-
-//=====[Declaration and initialization of private global variables]============
-
-//=====[Declarations (prototypes) of private functions]========================
-
-//=====[Implementations of public functions]===================================
 
 void ldrSensorInit() { }
-
 void ldrSensorUpdate() { }
 
-float ldrSensorRead()
+
+bool isDarkness()
 {
-    return ldr.read();
+    if ( eLDRvalue < threshold )
+    {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-//=====[Implementations of private functions]==================================
+bool isrRFID()
+{
+    if ( rLDRvalue > threshold )
+    {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool isgRFID()
+{
+    if ( gLDRvalue > threshold )
+    {
+        return true;
+    } else {
+        return false;
+    }
+}
