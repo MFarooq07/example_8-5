@@ -33,11 +33,9 @@ void isDarkness()
 {
     if ( eLDRvalue < threshold )
     {
-        entrywayLEDon(); 
-            /* creat this module: eLED (on when its dark) */
+        entrywayLEDon();  //in entryway
     } else {
-        entrywayLEDoff();
-            /* creat this module: eLED (off when its light) */
+        entrywayLEDoff();  //in entryway
     }
 }
 
@@ -55,7 +53,7 @@ bool isgRFID()
     if ( gLDRvalue > threshold )
     {
         openDoor(); //this will be in servo module
-        toGreenRGBLED(); //turn rgb tto green for 10s (10,000)
+        toGreenRGBLED(); //turn rgb to green for 10s (10,000)
         gLdrState = ON;   //Delvin
     }
 }
