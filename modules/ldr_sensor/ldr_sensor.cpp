@@ -53,6 +53,7 @@ bool isgRFID()
     if ( gLDRvalue > threshold )
     {
         openDoor(); //this will be in servo module
+        servo_doorInit();
         toGreenRGBLED(); //turn rgb to green for 10s (10,000)
         gLdrState = ON;   //Delvin
     }
