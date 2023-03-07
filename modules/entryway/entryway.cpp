@@ -8,7 +8,7 @@
 DigitalOut eLED(PE_10);
 
 
-void entrywayLEDon();
+void entrywayLEDon()
 {
   while (true)
   {
@@ -17,7 +17,7 @@ void entrywayLEDon();
 }
 
 
-void entrywayLEDoff();
+void entrywayLEDoff()
 {
   while (true)
   {
