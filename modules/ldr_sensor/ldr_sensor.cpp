@@ -21,11 +21,11 @@ static bool gLdrState = OFF;  // Delvin
 void ldrSensorInit() { }
 void ldrSensorUpdate() { }
 
-void rLdrStateRead(){         //Delvin
+bool rLdrStateRead(){         //Delvin
     return rLdrState;         //Delvin 
 }
 
-void gLdrStateRead(){     //Delvin
+bool gLdrStateRead(){     //Delvin
     return gLdrState;
 }
 
