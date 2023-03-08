@@ -28,8 +28,8 @@ typedef struct systemEvent {
 
 //=====[Declaration and initialization of private global variables]============
 
-static bool rLdrLastState = OFF;  ///// new
-static bool gLdrLastState = OFF;   //// new
+static bool rLdrLastState = OFF;  // new
+static bool gLdrLastState = OFF;   // new
 static bool sirenLastState = OFF;
 static bool gasLastState   = OFF;
 static bool tempLastState  = OFF;
@@ -75,11 +75,11 @@ void eventLogUpdate()
     motionLastState = currentState;
 
     currentState = rLdrRead();
-    eventLogElementStateUpdate( rLdrLastState, currentState, "rLDr state" );   //// new
+    eventLogElementStateUpdate( rLdrLastState, currentState, "rLDr state" );   // new
     rLdrLastState = currentState;
 
     currentState = gLdrRead();
-    eventLogElementStateUpdate( gLdrLastState, currentState, "gLDr state" ); ///// new
+    eventLogElementStateUpdate( gLdrLastState, currentState, "gLDr state" ); // new
     rLdrLastState = currentState;
 }
 
