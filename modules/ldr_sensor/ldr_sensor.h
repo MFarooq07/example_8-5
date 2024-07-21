@@ -11,7 +11,13 @@
 
 void ldrSensorInit();
 void ldrSensorUpdate();
-float ldrSensorRead();
+bool rLdrStateRead();  //Delvin
+bool gLdrStateRead();  //Delvin
+
+void isDarkness();
+
+void isrRFID();
+void isgRFID();
 
 //=====[#include guards - end]=================================================
 

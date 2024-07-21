@@ -1,35 +1,60 @@
-//=====[Libraries]=============================================================
-
+#include "mbed.h"
 #include "arm_book_lib.h"
-
-#include "smart_home_system.h"
 #include "ldr_sensor.h"
+#include "siren.h"
+#include "smart_home_system.h"
 
-//=====[Declaration of private defines]========================================
+AnalogIn eLDR(A2);
+AnalogIn rLDR(A3);
+AnalogIn gLDR(A4);
 
-//=====[Declaration of private data types]=====================================
+static float threshold = 0.5;
 
-//=====[Declaration and initialization of public global objects]===============
+static float eLDRvalue = eLDR.read();
+static float rLDRvalue = rLDR.read();
+static float gLDRvalue = gLDR.read();
 
-AnalogIn ldr(A2);
+static bool rLdrState = OFF;  // Delvin
+static bool gLdrState = OFF;  // Delvin
 
-//=====[Declaration of external public global variables]=======================
-
-//=====[Declaration and initialization of public global variables]=============
-
-//=====[Declaration and initialization of private global variables]============
-
-//=====[Declarations (prototypes) of private functions]========================
-
-//=====[Implementations of public functions]===================================
 
 void ldrSensorInit() { }
-
 void ldrSensorUpdate() { }
 
-float ldrSensorRead()
-{
-    return ldr.read();
+bool rLdrStateRead(){         //Delvin
+    return rLdrState;         //Delvin 
 }
 
-//=====[Implementations of private functions]==================================
+bool gLdrStateRead(){     //Delvin
+    return gLdrState;
+}
+
+void isDarkness()
+{
+    if ( eLDRvalue < threshold )
+    {
+        entrywayLEDon();  //in entryway
+    } else {
+        entrywayLEDoff();  //in entryway
+    }
+}
+
+bool isrRFID()
+{
+    if ( rLDRvalue > threshold )
+    {
+        oPiezoState();
+        rLdrState = ON;  //Delvin
+    }
+}
+
+bool isgRFID()
+{
+    if ( gLDRvalue > threshold )
+    {
+        openDoor(); //this will be in servo module
+        servo_doorInit();
+        toGreenRGBLED(); //turn rgb to green for 10s (10,000)
+        gLdrState = ON;   //Delvin
+    }
+}
